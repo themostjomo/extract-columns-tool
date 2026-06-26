@@ -1,0 +1,33 @@
+Script Name: extract_columns.py
+
+Description:
+A command-line tool that takes a spreadsheet (.xlsx) file and splits each
+column into its own separate .txt file. The column header is used as the
+filename, and every value in that column is written as a new line in the
+file. For example, a spreadsheet with three columns — Name, Score Total,
+and Notes/Comments — will produce three text files: Name.txt,
+Score_Total.txt, and Notes_Comments.txt, each containing all the row
+values for that column.
+
+Useful for quickly pulling raw column data out of a spreadsheet without
+opening Excel, for feeding individual columns into other tools, or for
+archiving/sharing single fields from a larger dataset.
+
+Usage:
+    python extract_columns.py input.xlsx [output_dir] [--sheet SHEET_NAME]
+
+Arguments:
+    input.xlsx     Path to the spreadsheet file to extract from (required)
+    output_dir     Folder to save the .txt files into (optional, defaults
+                    to a folder named "output")
+    --sheet        Name or index of the sheet to read, if the file has
+                    multiple sheets (optional, defaults to the first sheet)
+
+Requirements:
+    Python 3
+    pandas
+    openpyxl
+
+Example:
+    python extract_columns.py mysheet.xlsx
+    python extract_columns.py mysheet.xlsx results --sheet "Sheet2"
